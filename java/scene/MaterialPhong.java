@@ -44,17 +44,20 @@ public class MaterialPhong extends Material {
     /* TEXTURE UNIFORM*/
     GLES32.glUniform1i(20, 0); // AMBIENT
     GLES32.glUniform1i(21, 1); // DIFFUSE
+    GLES32.glUniform1i(18,2);
     /*TEXTURE UNIFORM*/
   }
 
   public void use() {
     GLES32.glUseProgram(program);
     GLES32.glActiveTexture(GLES32.GL_TEXTURE0);
+    GLES32.glBindTexture(GLES32.GL_TEXTURE_2D, textures[0]);
+    GLES32.glActiveTexture(GLES32.GL_TEXTURE1);
     GLES32.glBindTexture(GLES32.GL_TEXTURE_2D, textures[1]);
+    
   }
 
   public void update() {
-
     GLES32.glUniform1f(25, Ns);
     GLES32.glUniform3f(23, Kar, Kag, Kab);
     GLES32.glUniform3f(24, Kdr, Kdg, Kdb);

@@ -13,9 +13,9 @@ public Transform(){
   rx=0;
   ry=0;
   rz=0;
-  sx=0.01f;
-  sy=0.01f;
-  sz=0.01f;
+  sx=1f;
+  sy=1f;
+  sz=1f;
 }
 
 }

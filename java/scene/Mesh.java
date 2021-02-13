@@ -18,17 +18,23 @@ public FloatBuffer normalBuffer;
 
 public boolean vaoUpdated;
 
+public boolean cullObject;
+public boolean castShadow,receiveShadow;
+
 public int[] VAO;
 private int[] VBO;
 
 public Mesh(){
   vaoUpdated = false;
-  
   VAO = new int[1];
   VBO = new int[3];
+  vp = vn = vt = null;
+  cullObject = true;
+  //castShadow = false;
 }
 
 public void updateBuffer(){
+  if(vp!=null){
   vertexBuffer = ByteBuffer.allocateDirect(vp.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer();
   vertexBuffer.put(vp);
   vertexBuffer.position(0);
@@ -38,6 +44,8 @@ public void updateBuffer(){
   normalBuffer = ByteBuffer.allocateDirect(vn.length*4).order(ByteOrder.nativeOrder()).asFloatBuffer();
   normalBuffer.put(vn);
   normalBuffer.position(0);
+  cullObject = false;
+  }
 }
 
 public void updateVAO(){
